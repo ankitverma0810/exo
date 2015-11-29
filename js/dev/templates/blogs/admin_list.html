@@ -1,0 +1,23 @@
+<td><%= title %></td>
+<td><%= description %></td>
+<td><img src="<%= App.URL %>/files/blogs/<%= filename %>" alt="" width="100" height="100"></td>
+<td>
+	<%
+		if(parseInt(status_id) === 1) {
+			var dataStatus = 2,
+				className = 'btn-success';
+		} else {
+			var dataStatus = 1,
+				className = 'btn-warning';
+		}
+	%>
+	<a href="#admin/blogs/edit/<%= id %>" class="btn btn-info">Edit</a>
+	<a href="#" class="status btn <%= className %>" data-status="<%= dataStatus %>">
+		<% if (parseInt(status_id) === 1) { %>
+		    Active
+		<% } else { %>
+			Not Active
+		<% } %>
+	</a>
+	<a href="#" class="delete btn btn-danger">Delete</a>
+</td>

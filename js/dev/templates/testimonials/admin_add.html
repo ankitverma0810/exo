@@ -1,0 +1,25 @@
+<h2>Testimonial</h2> <br>
+
+<form id="addTestimonial">
+	<fieldset>
+		<div class="form-group">
+			<label>Auhtor</label>
+			<input name="author" type="text" id="author" class="form-control" value="<%= author %>">
+			<p class="help-block"></p>
+		</div>
+
+		<div class="form-group">
+			<label>Description</label>
+			<textarea name="description" id="description" class="form-control"><%= description %></textarea>
+			<p class="help-block"></p>
+		</div>
+
+		<div class="form-group" id="imageContainer">
+			<label>Image</label>
+		</div>
+
+		<div class="submit">
+			<button type="button" class="btn btn-success" id="submitTestimonial">Submit</button>
+		</div>
+	</fieldset>
+</form>

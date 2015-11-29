@@ -1,0 +1,23 @@
+<td><%= Parent.title %></td>
+<td><%= title %></td>
+<td><%= controller %></td>
+<td><%= action %></td>
+<td>
+	<%
+		if(parseInt(status_id) === 1) {
+			var dataStatus = 2,
+				className = 'btn-success';
+		} else {
+			var dataStatus = 1,
+				className = 'btn-warning';
+		}
+	%>
+	<a href="#" class="status btn <%= className %>" data-status="<%= dataStatus %>">
+		<% if (parseInt(status_id) === 1) { %>
+		    Active
+		<% } else { %>
+			Not Active
+		<% } %>
+	</a>
+	<a href="#" class="delete btn btn-danger">Delete</a>
+</td>

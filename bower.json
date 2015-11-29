@@ -1,0 +1,13 @@
+{
+  "name": "Customer Manager",
+  "version": "1.2.3",
+  "dependencies": {
+    "requirejs": "latest",
+    "jquery": "latest",
+    "backbone": "latest",
+    "underscore": "latest",
+    "requirejs-text": "~2.0.14",
+    "bootstrap-sass": "~3.3.5",
+    "ckeditor": "~4.5.5"
+  }
+}

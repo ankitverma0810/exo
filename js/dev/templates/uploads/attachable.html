@@ -1,0 +1,10 @@
+<input name="image" type="file" id="image" class="form-control">
+<input name="filename" type="hidden" id="filename" class="form-control" value="<%= data.filename %>">
+<p class="help-block"></p>
+
+<div id="upload-image-container">
+	<% if(data.filename) { %>
+		<img src="<%= App.URL %>/files/<%= location %><%= data.filename %>" alt="">
+		<a href="#" id="deleteImage">x</a>
+	<% } %>
+</div>

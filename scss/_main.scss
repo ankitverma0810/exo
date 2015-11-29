@@ -1,0 +1,30 @@
+#container {
+	margin-bottom: 50px;
+}
+
+#upload-image-container {
+	position: relative;
+	display: inline-block;
+
+	img {
+		width: 100px;
+		height: 100px;
+		margin-bottom: 15px;
+	}
+
+	a {
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		color: #fff;
+		background-color: #737373;
+		border-radius: 10px;
+		width: 20px;
+		height: 20px;
+		text-align: center;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}

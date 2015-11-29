@@ -1,0 +1,25 @@
+<h2>Service</h2> <br>
+
+<form id="addService">
+	<fieldset>
+		<div class="form-group">
+			<label>Title</label>
+			<input name="title" type="text" id="title" class="form-control" value="<%= title %>">
+			<p class="help-block"></p>
+		</div>
+
+		<div class="form-group">
+			<label>Description</label>
+			<textarea name="description" id="description" class="form-control"><%= description %></textarea>
+			<p class="help-block"></p>
+		</div>
+
+		<div class="form-group" id="imageContainer">
+			<label>Image</label>
+		</div>
+
+		<div class="submit">
+			<button type="button" class="btn btn-success" id="submitService">Submit</button>
+		</div>
+	</fieldset>
+</form>
