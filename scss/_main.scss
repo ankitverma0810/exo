@@ -2,6 +2,14 @@
 	margin-bottom: 50px;
 }
 
+#header {
+	position: absolute;
+	left: 0px;
+	top: 25px;
+	right: 0px;
+	z-index: 9999;
+}
+
 #upload-image-container {
 	position: relative;
 	display: inline-block;
@@ -27,4 +35,8 @@
 			text-decoration: none;
 		}
 	}
+}
+
+.carousel-inner img {
+	width: 100%;
 }
