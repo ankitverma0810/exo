@@ -20,10 +20,12 @@ define([
 
 		beforeSave: function() {
 			var self = this,
+				$title = this.$el.find('#title'),
+				$description = this.$el.find('#description'),
 				$url = this.$el.find('#url'),
 				$filename = this.$el.find('#filename');
 
-			this.model.set( { filename: $filename[0]['files'][0], url: $url.val() } );
+			this.model.set( { filename: $filename[0]['files'][0], url: $url.val(), title: $title.val(), description: $description.val() } );
 			if( this.model.isValid() ) {
 				App.uploadFile(this.model.get('filename'), 'banners',
 	                function (response) {

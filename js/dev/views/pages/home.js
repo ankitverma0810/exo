@@ -8,14 +8,19 @@ define([
 
 		template: _.template(HomePage),
 
-		initialize: function () {
+		initialize: function (options) {
+            this.banners = options.banners;
+            this.services = options.services;
         },
         
         events: {
         },
 
         render: function () {
-            this.$el.html(this.template());
+            this.$el.html(this.template({
+                banners: this.banners,
+                services: this.services
+            }));
             return this;
         }
 	});

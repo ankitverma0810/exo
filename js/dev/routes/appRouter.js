@@ -67,7 +67,20 @@ define([
         },
 
         index: function() {
-            this.render(new HomePageView());
+            var self = this;
+
+            $.ajax({
+                url: App.URL+'/',
+                type: 'GET',
+                success: function (response) {
+                    var response = $.parseJSON(response);
+                    self.render(new HomePageView(response));
+                },
+                error: function(err) {
+                    console.log(err);
+                    App.showAlert('alert alert-danger', 'Some error occured while loading view.');
+                }
+            });
         }
 	});
 

@@ -7,6 +7,8 @@ define([
 		defaults: {
             id: null,
             filename: '',
+            title: '',
+            description: '',
             url: ''
         },
 
@@ -34,6 +36,7 @@ define([
 	    validate: function( attrs ) {
 			var errs = {};
 			if( !attrs.filename ) errs.filename = { message: 'Required' };
+			if( !attrs.title ) errs.title = { message: 'Required' };
 			if( !attrs.url ) errs.url = { message: 'Required' };
 			if( !_.isEmpty(errs) ) return errs;
 		}
