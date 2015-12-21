@@ -1,7 +1,8 @@
 require([
 	'app',
     'routes/appRouter',
-    'models/SessionModel'
+    'models/SessionModel',
+    'mixins'
 ], function (App, appRouter, SessionModel) {
 	'use strict';
 	
@@ -26,4 +27,44 @@ require([
         var href = $(e.currentTarget).attr('href');
         App.router.navigate(href, { trigger : true, replace : false });
     });
+
+    //affixnav
+	$('header').affix({
+		offset: {
+			top: 0
+		}
+	});
+
+	//global sync functions as per cake api
+	Backbone.Model.prototype.sync = function(method, model, options) {
+		if(method == 'read') {
+    		options.url = model.urlRoot+'view/'+model.id;
+    	}
+    	if(method == 'create') {
+    		options.url = model.urlRoot+'add';
+    	}
+    	if(method == 'update') {
+    		options.url = model.urlRoot+'edit/'+model.id; 
+    	}
+    	if(method == 'delete') {
+    		options.url = model.urlRoot+'delete/'+model.id;
+    	}
+   		return Backbone.sync(method, model, options);
+  	}
+
+	//default ajax setup
+	$.ajaxSetup({
+		cache: false,
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('X-CSRF-Token', App.session.get('access_token'));
+        },
+	    statusCode: {
+	        401: function() {
+	            window.location.replace('');	         
+	        },
+	        403: function() {
+	            window.location.replace('');
+	        }
+	    }
+	});
 });

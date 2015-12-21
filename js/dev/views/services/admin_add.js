@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddService = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'service-container',
+		className: 'inner-container service-container',
 
 		initialize: function() {
 			this.model.on("invalid", function(model, errs) {
@@ -27,6 +27,7 @@ define([
 
 			this.model.save({
 					title: $title.val(),
+					url: $title.val().replace(/\s+/g, '-').toLowerCase(),
 					description: $description.val(),
 					filename: $filename.val()
 				}, {

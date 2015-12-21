@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddBanner = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'banner-container',
+		className: 'inner-container banner-container',
 
 		initialize: function() {
 			this.model.on("invalid", function(model, errs) {

@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddMenu = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'menu-container',
+		className: 'inner-container menu-container',
 
 		initialize: function(options) {
 			this.model.on("invalid", function(model, errs) {

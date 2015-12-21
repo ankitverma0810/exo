@@ -1,78 +1,145 @@
+<!-- banner -->
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        <li data-target="#carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel" data-slide-to="1"></li>
-        <li data-target="#carousel" data-slide-to="2"></li>
+        <% _.times(banners.length, function(n) { %>
+            <li data-target="#carousel" data-slide-to="<%= n %>" class="<% (n === 0) ? print('active') : '' %>"></li>
+        <% }); %>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="img/banner.jpg" alt="">
-            <div class="carousel-caption">
-                <h1>Just Creative One Page</h1>
-                <a href="#" class="btn btn-default">Start Theme</a>
+        <% var count = 1; %>
+        <% _.each(banners, function(item) { %>
+            <div class="item <% (count === 1) ? print('active') : '' %>">
+                <img src="<%= App.URL %>/files/banners/<%= item.Banner.filename %>" alt="">
+                <div class="carousel-caption">
+                    <h1><%= item.Banner.title %></h1>
+                </div>
             </div>
-        </div>
-
-        <div class="item">
-            <img src="img/banner.jpg" alt="">
-            <div class="carousel-caption">
-                <h1>Just Creative One Page</h1>
-                <a href="#" class="btn btn-default">Start Theme</a>
-            </div>
-        </div>
+            <% count++; %>
+        <% }); %>
     </div>
 
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
+    <% if(banners.length > 1) { %>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev" data-bypass="true">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
 
-    <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+        <a class="right carousel-control" href="#carousel" role="button" data-slide="next" data-bypass="true">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    <% } %>
 </div>
 
+<!-- Services -->
 <div class="services-container text-center container">
     <h2>Services</h2>
     <p>Impress your clients and visitors while using a single, rock-solid foundation</p>
 
     <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="img/services.jpg" alt="">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+        <% _.each(services, function(item) { %>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="<%= App.URL %>/files/services/<%= item.Service.filename %>" alt="">
+                    <div class="caption">
+                        <h3><%= item.Service.title %></h3>
+                        <p><%= item.Service.description %></p>
+                        <p><a href="/services/<%= item.Service.url %>" class="btn btn-primary" role="button">Button</a></p>
+                    </div>
                 </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+<!-- Portfolio -->
+<div class="portfolio-container">
+    <div class="portfolio-page text-center">
+        <h2>Recent Works</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+
+    <div class="portfolio-body container">
+        <div class="row">
+            <% _.each(portfolios, function(item) { %>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <a href="<%= item.Portfolio.url %>" target="_blank">
+                            <img src="<%= App.URL %>/files/portfolios/<%= item.Portfolio.filename %>" alt="">
+                            <div class="caption">
+                                <h3><%= item.Portfolio.title %></h3>
+                                <p><%= item.Portfolio.description %></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials -->
+<div class="testimonail-container">
+    <div class="testimonial-page container text-center">
+        <h2>Testimonial</h2>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
+    </div>
+
+    <div class="container">
+        <div id="testimonail-carousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <% _.times(testimonials.length, function(n) { %>
+                    <li data-target="#testimonail-carousel" data-slide-to="<%= n %>" class="<% (n === 0) ? print('active') : '' %>"></li>
+                <% }); %>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <% var count = 1; %>
+                <% _.each(testimonials, function(item) { %>
+                    <div class="item <% (count === 1) ? print('active') : '' %>">
+                        <div class="carousel-caption clearfix">
+                            <p><%= item.Testimonial.description %></p>
+                            <div class="col-md-push-4 col-md-4 author">
+                                <img src="<%= App.URL %>/files/testimonials/<%= item.Testimonial.filename %>" alt="">
+                                <span><%= item.Testimonial.author %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <% count++; %>
+                <% }) %>
             </div>
         </div>
+    </div>
+</div>
 
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="img/services.jpg" alt="">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
-                </div>
-            </div>
-        </div>
+<!-- Blogs -->
+<div class="blogs-container">
+    <div class="text-center">
+        <h2>Just Blog</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
 
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <img src="img/services.jpg" alt="">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+    <div class="container">
+        <div class="row">
+            <% _.each(blogs, function(item) { %>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <a href="blogs/<%= item.Blog.url %>">
+                            <img src="<%= App.URL %>/files/blogs/<%= item.Blog.filename %>" alt="">
+                            <div class="caption">
+                                <h3><%= _.capitalize(item.Blog.title) %></h3>
+                                <p><%= _.truncate(item.Blog.description, 100) %></p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            <% }) %>
         </div>
     </div>
 </div>

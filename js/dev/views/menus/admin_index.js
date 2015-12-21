@@ -7,7 +7,7 @@ define([
 
 	App.Views.Menus = Backbone.View.extend({
 		template: _.template(admin_index),
-		className: 'menu-container',
+		className: 'inner-container menu-container',
 
 		initialize: function() {
 			this.$el.html(this.template());

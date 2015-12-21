@@ -11,6 +11,9 @@ define([
 		initialize: function (options) {
             this.banners = options.banners;
             this.services = options.services;
+            this.portfolios = options.portfolios;
+            this.testimonials = options.testimonials;
+            this.blogs = options.blogs;
         },
         
         events: {
@@ -19,7 +22,10 @@ define([
         render: function () {
             this.$el.html(this.template({
                 banners: this.banners,
-                services: this.services
+                services: this.services,
+                portfolios: this.portfolios,
+                testimonials: this.testimonials,
+                blogs: this.blogs
             }));
             return this;
         }

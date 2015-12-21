@@ -36,9 +36,11 @@ define([
 
         beforeRender: function() {
             //assigning header view to all the current view
-            if(!this.headerView) {
+            if(Backbone.history.fragment !== 'login') {
                 this.headerView = new HeaderView();
-                this.headerView.setElement($('#header')).render();
+                $('header').html(this.headerView.render().$el);
+            } else {
+                $('header').empty();
             }
         },
 
@@ -53,11 +55,12 @@ define([
                     success: function(res) {
                         $('#container').html(self.currentView.render().$el);
                     }, error: function(res) {
-                        App.router.navigate('', {trigger: true});
+                        App.router.navigate('login', {trigger: true});
                     }
                 });
             } else {
                 $('#container').html(this.currentView.render().$el);
+
                 //rendering image view through attachable view
                 if( typeof options !== 'undefined' && options.renderImage ) {
                     var uploadImage = new attachableView({ model: this.currentView.model });
@@ -68,12 +71,12 @@ define([
 
         index: function() {
             var self = this;
-
             $.ajax({
                 url: App.URL+'/',
                 type: 'GET',
                 success: function (response) {
                     var response = $.parseJSON(response);
+                    console.log(response);
                     self.render(new HomePageView(response));
                 },
                 error: function(err) {

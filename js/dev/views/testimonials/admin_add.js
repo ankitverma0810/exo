@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddTestimonial = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'testimonial-container',
+		className: 'inner-container testimonial-container',
 
 		initialize: function() {
 			this.model.on("invalid", function(model, errs) {
@@ -33,6 +33,7 @@ define([
 					validate: true,
 					success: function (model, response) {
 		                Backbone.history.loadUrl(Backbone.history.fragment);
+		                //App.router.navigate(Backbone.history.fragment, {trigger: true});
 		                App.showAlert('alert alert-success', response.success);
 		            },
 		            error: function (error) {

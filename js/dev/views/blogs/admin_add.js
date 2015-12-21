@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddBlog = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'blog-container',
+		className: 'inner-container blog-container',
 
 		initialize: function() {
 			this.model.on("invalid", function(model, errs) {
@@ -27,6 +27,7 @@ define([
 
 			this.model.save({
 					title: $title.val(),
+					url: $title.val().replace(/\s+/g, '-').toLowerCase(),
 					description: $description.val(),
 					filename: $filename.val(),
 					status_id: 1

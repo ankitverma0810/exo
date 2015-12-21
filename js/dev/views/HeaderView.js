@@ -28,7 +28,7 @@ define([
                     } else {
                         App.session.loggedOut();
                         App.showAlert('alert alert-success', response.success);
-                        App.router.navigate('', {trigger: true});
+                        App.router.navigate('login', {trigger: true});
                     }
                 },
                 error: function() {

@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,900,300);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -7319,16 +7320,47 @@ button.close {
     display: none !important;
   }
 }
-#container {
-  margin-bottom: 50px;
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
-#header {
+h2 {
+  font-size: 40px;
+}
+
+p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+header {
   position: absolute;
   left: 0px;
-  top: 25px;
+  right: 0px;
+}
+header.affix {
+  left: 0px;
   right: 0px;
   z-index: 9999;
+}
+
+.wrap {
+  margin-bottom: 50px;
+  padding-top: 52px;
+}
+
+.inner-container {
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
 }
 
 #upload-image-container {
@@ -7357,6 +7389,44 @@ button.close {
 
 .carousel-inner img {
   width: 100%;
+}
+
+.testimonail-container {
+  background: url('../img/testimonial-background.jpg?1450515406') no-repeat top center/100%;
+  padding: 35px 0px;
+}
+.testimonail-container h2 {
+  color: #fff;
+}
+.testimonail-container p {
+  color: #fff;
+  font-size: 17px;
+}
+.testimonail-container #testimonail-carousel {
+  padding: 100px 0 20px 0;
+}
+.testimonail-container #testimonail-carousel .carousel-caption {
+  position: relative;
+  left: auto;
+  right: auto;
+  top: 0px;
+  bottom: 0px;
+}
+.testimonail-container #testimonail-carousel .carousel-caption img {
+  max-width: 55px;
+  margin-right: 10px;
+}
+.testimonail-container #testimonail-carousel .carousel-caption .author {
+  border-top: solid 1px #ccc;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+.testimonail-container #testimonail-carousel .carousel-indicators {
+  bottom: 0px;
+}
+
+.blogs-container img {
+  max-width: 345px;
 }
 
 /*# sourceMappingURL=app.css.map */

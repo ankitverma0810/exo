@@ -7,7 +7,7 @@ define([
 
 	App.Views.Pages = Backbone.View.extend({
 		template: _.template(admin_index),
-		className: 'page-container',
+		className: 'inner-container page-container',
 
 		initialize: function() {
 			this.$el.html(this.template());

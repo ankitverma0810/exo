@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddPortfolio = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'portfolio-container',
+		className: 'inner-container portfolio-container',
 
 		initialize: function() {
 			this.model.on("invalid", function(model, errs) {
