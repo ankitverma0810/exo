@@ -1,10 +1,10 @@
 define([
 	'app',
     'models/SessionModel',
-    'views/pages/home',
     'views/HeaderView',
-    'views/SidebarView',
+    'views/FooterView',
     'views/uploads/attachable',
+    'views/errors/404',
     'routes/userRouter',
     'routes/bannerRouter',
     'routes/menuRouter',
@@ -14,15 +14,19 @@ define([
     'routes/portfolioRouter',
     'routes/serviceRouter',
     'routes/testimonialRouter',
-], function (App, SessionModel, HomePageView, HeaderView, SidebarView, attachableView, userRouter, bannerRouter, menuRouter, configRouter, blogRouter, pageRouter, portfolioRouter, serviceRouter, testimonialRouter) {
+], function (App, SessionModel, HeaderView, FooterView, attachableView, ErrorView, userRouter, bannerRouter, menuRouter, configRouter, blogRouter, pageRouter, portfolioRouter, serviceRouter, testimonialRouter) {
 	'use strict';
 
 	App.Router = Backbone.Router.extend({
 		routes: {
-            '' : 'index'
+            '*other': '404'
         },
 
         initialize: function() {
+            this.initializeRoutes();
+        },
+
+        initializeRoutes: function() {
             userRouter = new userRouter();
             bannerRouter = new bannerRouter();
             menuRouter = new menuRouter();
@@ -35,12 +39,16 @@ define([
         },
 
         beforeRender: function() {
-            //assigning header view to all the current view
             if(Backbone.history.fragment !== 'login') {
+                //assigning header view to all the current view
                 this.headerView = new HeaderView();
                 $('header').html(this.headerView.render().$el);
+
+                //assigning footer view
+                this.footerView = new FooterView();
+                $('footer').html(this.footerView.render().$el);
             } else {
-                $('header').empty();
+                $('header, footer').empty();
             }
         },
 
@@ -69,21 +77,8 @@ define([
             }
         },
 
-        index: function() {
-            var self = this;
-            $.ajax({
-                url: App.URL+'/',
-                type: 'GET',
-                success: function (response) {
-                    var response = $.parseJSON(response);
-                    console.log(response);
-                    self.render(new HomePageView(response));
-                },
-                error: function(err) {
-                    console.log(err);
-                    App.showAlert('alert alert-danger', 'Some error occured while loading view.');
-                }
-            });
+        404: function(route) {
+            this.render(new ErrorView({page: route}));
         }
 	});
 

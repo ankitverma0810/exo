@@ -13,6 +13,10 @@ p {
 	font-weight: 300;
 }
 
+.errorMsg {
+	margin: 20px auto;
+}
+
 header {
 	position: absolute;
 	left: 0px;
@@ -26,14 +30,13 @@ header {
 }
 
 .wrap {
-	margin-bottom: 50px;
 	padding-top: 52px;
 }
 
 .inner-container {
-	padding-top: 20px;
-	margin: 0 auto;
+	margin: 0 auto 40px;
 	max-width: 1170px;
+	min-height: 532px;
 }
 
 .navbar {
@@ -75,8 +78,14 @@ header {
 	width: 100%;
 }
 
+.main-sections {
+	margin-bottom: 30px;
+}
+
 .testimonail-container {
-	@include background(image-url("testimonial-background.jpg") no-repeat top center / 100%);
+	background-repeat: no-repeat;
+	background-positon: top center;
+	background-size: 100%;
 	padding: 35px 0px;
 
 	h2 {
@@ -119,5 +128,31 @@ header {
 .blogs-container {
 	img {
 		max-width: 345px;
+	}
+}
+
+.contact-container {
+	background-repeat: no-repeat;
+	background-positon: top center;
+	background-size: 100%;
+	padding: 50px 0px;
+}
+
+footer {
+	.footer-container {
+		padding: 12px 0px;
+		background-color: #333;
+		color: #fff;
+
+		li {
+			a {
+				padding: 0px 15px !important;
+				color: #fff;
+
+				&:hover {
+					background-color: #333;
+				}
+			}
+		}
 	}
 }

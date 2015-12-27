@@ -7333,6 +7333,10 @@ p {
   font-weight: 300;
 }
 
+.errorMsg {
+  margin: 20px auto;
+}
+
 header {
   position: absolute;
   left: 0px;
@@ -7345,14 +7349,13 @@ header.affix {
 }
 
 .wrap {
-  margin-bottom: 50px;
   padding-top: 52px;
 }
 
 .inner-container {
-  padding-top: 20px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   max-width: 1170px;
+  min-height: 532px;
 }
 
 .navbar {
@@ -7391,8 +7394,14 @@ header.affix {
   width: 100%;
 }
 
+.main-sections {
+  margin-bottom: 30px;
+}
+
 .testimonail-container {
-  background: url('../img/testimonial-background.jpg?1450515406') no-repeat top center/100%;
+  background-repeat: no-repeat;
+  background-positon: top center;
+  background-size: 100%;
   padding: 35px 0px;
 }
 .testimonail-container h2 {
@@ -7427,6 +7436,26 @@ header.affix {
 
 .blogs-container img {
   max-width: 345px;
+}
+
+.contact-container {
+  background-repeat: no-repeat;
+  background-positon: top center;
+  background-size: 100%;
+  padding: 50px 0px;
+}
+
+footer .footer-container {
+  padding: 12px 0px;
+  background-color: #333;
+  color: #fff;
+}
+footer .footer-container li a {
+  padding: 0px 15px !important;
+  color: #fff;
+}
+footer .footer-container li a:hover {
+  background-color: #333;
 }
 
 /*# sourceMappingURL=app.css.map */

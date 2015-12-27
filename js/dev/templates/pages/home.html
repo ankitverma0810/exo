@@ -1,5 +1,5 @@
 <!-- banner -->
-<div id="carousel" class="carousel slide" data-ride="carousel">
+<div id="carousel" class="main-sections carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <% _.times(banners.length, function(n) { %>
@@ -36,9 +36,9 @@
 </div>
 
 <!-- Services -->
-<div class="services-container text-center container">
-    <h2>Services</h2>
-    <p>Impress your clients and visitors while using a single, rock-solid foundation</p>
+<div class="main-sections services-container text-center container">
+    <h2><%= pages[0].Page.title %></h2>
+    <p><%= pages[0].Page.description %></p>
 
     <div class="row">
         <% _.each(services, function(item) { %>
@@ -47,7 +47,7 @@
                     <img src="<%= App.URL %>/files/services/<%= item.Service.filename %>" alt="">
                     <div class="caption">
                         <h3><%= item.Service.title %></h3>
-                        <p><%= item.Service.description %></p>
+                        <p><%= _.truncate(item.Service.description, 100) %></p>
                         <p><a href="/services/<%= item.Service.url %>" class="btn btn-primary" role="button">Button</a></p>
                     </div>
                 </div>
@@ -57,10 +57,10 @@
 </div>
 
 <!-- Portfolio -->
-<div class="portfolio-container">
+<div class="main-sections portfolio-container">
     <div class="portfolio-page text-center">
-        <h2>Recent Works</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h2><%= pages[1].Page.title %></h2>
+        <p><%= pages[1].Page.description %></p>
     </div>
 
     <div class="portfolio-body container">
@@ -72,7 +72,7 @@
                             <img src="<%= App.URL %>/files/portfolios/<%= item.Portfolio.filename %>" alt="">
                             <div class="caption">
                                 <h3><%= item.Portfolio.title %></h3>
-                                <p><%= item.Portfolio.description %></p>
+                                <p><%= _.truncate(item.Portfolio.description, 100) %></p>
                             </div>
                         </a>
                     </div>
@@ -83,10 +83,10 @@
 </div>
 
 <!-- Testimonials -->
-<div class="testimonail-container">
+<div class="main-sections testimonail-container" style="background-image: url('<%= App.URL %>/files/pages/<%= pages[2].Page.filename %>');">
     <div class="testimonial-page container text-center">
-        <h2>Testimonial</h2>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
+        <h2><%= pages[2].Page.title %></h2>
+        <p><%= pages[2].Page.description %></p>
     </div>
 
     <div class="container">
@@ -119,10 +119,10 @@
 </div>
 
 <!-- Blogs -->
-<div class="blogs-container">
+<div class="main-sections blogs-container">
     <div class="text-center">
-        <h2>Just Blog</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h2><%= pages[3].Page.title %></h2>
+        <p><%= pages[3].Page.description %></p>
     </div>
 
     <div class="container">
@@ -133,7 +133,7 @@
                         <a href="blogs/<%= item.Blog.url %>">
                             <img src="<%= App.URL %>/files/blogs/<%= item.Blog.filename %>" alt="">
                             <div class="caption">
-                                <h3><%= _.capitalize(item.Blog.title) %></h3>
+                                <h3><%= item.Blog.title %></h3>
                                 <p><%= _.truncate(item.Blog.description, 100) %></p>
                             </div>
                         </a>
@@ -141,5 +141,31 @@
                 </div>
             <% }) %>
         </div>
+    </div>
+</div>
+
+<!-- contact us -->
+<div class="contact-container" style="background-image: url('<%= App.URL %>/files/pages/<%= pages[4].Page.filename %>');">
+    <div class="text-center">
+        <h2><%= pages[4].Page.title %></h2>
+        <p><%= pages[4].Page.description %></p>
+    </div>
+
+    <div class="container">
+        <form class="col-md-8 col-md-push-2 text-center">
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder="Name">
+                <p class="help-block"></p>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Email">
+                <p class="help-block"></p>
+            </div>
+            <div class="form-group">
+                <textarea id="message" class="form-control" placeholder="Message"></textarea>
+                <p class="help-block"></p>
+            </div>
+            <button id="quickContact" class="btn btn-default">Send Message</button>
+        </form>
     </div>
 </div>

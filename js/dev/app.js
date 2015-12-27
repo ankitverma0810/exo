@@ -16,8 +16,13 @@ define([
 		Router: {},
 		Vent: _.extend( {}, Backbone.Events ),
 
+		initialize: function() {
+			//affixnav for header
+			$('header').affix();
+		},
+
 		showAlert: function(className, message) {
-			$('#flashMessage').html('<div class="container '+className+'">'+message+'</div>');
+			$('#flashMessage').html('<div class="errorMsg container '+className+'">'+message+'</div>');
             setTimeout(function() {
                 $('#flashMessage').html('');
             }, 3000 );
@@ -60,6 +65,10 @@ define([
 	        });
 	    }
 	}
+
+	$(document).ready(function() {
+		App.initialize();
+	});
 
 	return window.App;
 });

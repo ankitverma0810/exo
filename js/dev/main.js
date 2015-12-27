@@ -28,13 +28,6 @@ require([
         App.router.navigate(href, { trigger : true, replace : false });
     });
 
-    //affixnav
-	$('header').affix({
-		offset: {
-			top: 0
-		}
-	});
-
 	//global sync functions as per cake api
 	Backbone.Model.prototype.sync = function(method, model, options) {
 		if(method == 'read') {

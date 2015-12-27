@@ -1,16 +1,34 @@
 define([
     'collections/PagesCollection',
+    'views/pages/home',
     'views/pages/admin_index',
     'views/pages/admin_add',
-], function (PagesCollection, adminPageIndexView, adminPageAddView) {
+], function (PagesCollection, HomePageView, adminPageIndexView, adminPageAddView) {
 	'use strict';
 
 	var pageRouter = Backbone.Router.extend({
 		routes: {
+            '' : 'index',
+            'pages/:name/:id': 'viewPage',
             'admin/pages': 'admin_listPages',
             'admin/pages/add': 'admin_addPage',
-            'admin/pages/edit/:id' : 'admin_editPage',
-            'pages/:name/:id': 'viewPage',
+            'admin/pages/edit/:id' : 'admin_editPage'
+        },
+
+        index: function() {
+            $.ajax({
+                url: App.URL+'/',
+                type: 'GET',
+                success: function (response) {
+                    var data = $.parseJSON(response);
+                    console.log(data);
+                    App.router.render(new HomePageView({ response: data }));
+                },
+                error: function(err) {
+                    console.log(err);
+                    App.showAlert('alert alert-danger', 'Some error occured while loading view.');
+                }
+            });
         },
 
         admin_listPages: function() {
