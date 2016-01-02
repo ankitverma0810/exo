@@ -7,7 +7,7 @@ define([
 
 	App.Views.Blogs = Backbone.View.extend({
 		template: _.template(admin_index),
-		className: 'inner-container blog-container',
+		className: 'blog-container',
 
 		initialize: function() {
 			this.$el.html(this.template());

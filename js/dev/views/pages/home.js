@@ -1,7 +1,8 @@
 define([
     'app',
+    '../modals/contact',
     'text!templates/pages/home.html'
-], function(App, HomePage) {
+], function(App, Modal, HomePage) {
 	'use strict';
 
 	App.Views.HomePage = Backbone.View.extend({
@@ -23,18 +24,22 @@ define([
                 $email = this.$el.find('#email').val(),
                 $message = this.$el.find('#message').val();
 
-            //need to open modal on success and error
-            //no need to loadurl again. Jsut empty the form and open modal
             $.ajax({
                 url: App.URL+'/pages/submitContact',
                 type: 'POST',
                 data: JSON.stringify({ name: $name, email: $email, message: $message }),
                 success: function (response) {
-                    Backbone.history.loadUrl(Backbone.history.fragment);
-                    App.showAlert('alert alert-success', response.success);
+                    var response = $.parseJSON(response);                    
+                    if(response.error) {
+                        var ContactModal = new Modal({ data: response.error });
+                    } else {
+                        var ContactModal = new Modal({ data: response.success });
+                    }
+                    $('.contact-container form')[0].reset();
                 },
-                error: function() {
-                    App.showAlert('alert alert-danger', 'Some error occured. Please try again later!!');
+                error: function(response) {
+                    console.log(response);
+                    $('.contact-container form')[0].reset();
                 }
             });
         },

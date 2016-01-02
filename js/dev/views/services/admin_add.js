@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddService = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'inner-container service-container',
+		className: 'service-container',
 
 		initialize: function() {
 			this.model.on("invalid", function(model, errs) {

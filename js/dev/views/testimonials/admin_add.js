@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddTestimonial = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'inner-container testimonial-container',
+		className: 'testimonial-container',
 
 		initialize: function() {
 			this.model.on("invalid", function(model, errs) {

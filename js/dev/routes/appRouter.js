@@ -38,7 +38,7 @@ define([
             testimonialRouter = new testimonialRouter();
         },
 
-        beforeRender: function() {
+        assignPartials: function() {
             if(Backbone.history.fragment !== 'login') {
                 //assigning header view to all the current view
                 this.headerView = new HeaderView();
@@ -52,9 +52,28 @@ define([
             }
         },
 
-        render: function(view, options) {
-            this.beforeRender();
+        beforeRender: function(view) {
+            //rendering common partials
+            this.assignPartials();
+
+            //defining current and previous views
+            this.previousView = this.currentPage || null;
             this.currentView = view;
+
+            if (this.previousView) {
+                App.transitionOut(this.previousView, function() {
+                    this.previousView.remove();
+                });
+            }
+
+            //adding inner container class to our view (only for admin pages)
+            if (Backbone.history.fragment.indexOf('admin') > -1) {
+                this.currentView.$el.addClass('inner-container');
+            }
+        },
+
+        render: function(view, options) {
+            this.beforeRender(view);
 
             if(typeof options !== 'undefined' && options.requiresAuth) {
                 //re-checking authorization
@@ -75,6 +94,13 @@ define([
                     this.currentView.$el.find('#imageContainer').append(uploadImage.render().el);
                 }
             }
+
+            this.afterRender();
+        },
+
+        afterRender: function() {
+            App.transitionIn(this.currentView);
+            this.currentPage = this.currentView;
         },
 
         404: function(route) {

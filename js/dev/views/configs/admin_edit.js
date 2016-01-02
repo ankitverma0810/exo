@@ -6,7 +6,7 @@ define([
 
 	App.Views.EditConfig = Backbone.View.extend({
 		template: _.template(admin_edit),
-		className: 'inner-container config-container',
+		className: 'config-container',
 
 		initialize: function(options) {
 			this.model.on("invalid", function(model, errs) {

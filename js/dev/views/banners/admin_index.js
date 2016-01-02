@@ -7,7 +7,7 @@ define([
 
 	App.Views.Banners = Backbone.View.extend({
 		template: _.template(admin_index),
-		className: 'inner-container banner-container',
+		className: 'banner-container',
 
 		initialize: function() {
 			this.$el.html(this.template());

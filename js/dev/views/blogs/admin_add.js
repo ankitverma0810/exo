@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddBlog = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'inner-container blog-container',
+		className: 'blog-container',
 
 		initialize: function() {
 			this.model.on("invalid", function(model, errs) {

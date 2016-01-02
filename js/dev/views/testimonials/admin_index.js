@@ -7,7 +7,7 @@ define([
 
 	App.Views.Testimonials = Backbone.View.extend({
 		template: _.template(admin_index),
-		className: 'inner-container testimonial-container',
+		className: 'testimonial-container',
 
 		initialize: function() {
 			this.$el.html(this.template());

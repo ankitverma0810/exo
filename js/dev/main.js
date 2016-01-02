@@ -46,8 +46,28 @@ require([
   	}
 
 	//default ajax setup
+	var originalXhr = $.ajaxSettings.xhr;
 	$.ajaxSetup({
 		cache: false,
+		progress: function() { 
+			console.log("standard progress callback"); 
+		},
+        progressUpload: function() { 
+        	console.log("standard upload progress callback"); 
+        },
+		xhr: function() {
+            var req = originalXhr(), 
+            	that = this;
+
+            if (req.upload) {
+                if ( typeof req.upload.addEventListener == "function" ) {
+                    req.upload.addEventListener("progress", function(evt) {
+                        that.progressUpload(evt);
+                    }, false);
+                }
+            }
+            return req;
+        },
 		beforeSend: function(xhr) {
 			xhr.setRequestHeader('X-CSRF-Token', App.session.get('access_token'));
         },

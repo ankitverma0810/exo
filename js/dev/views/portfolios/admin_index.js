@@ -7,7 +7,7 @@ define([
 
 	App.Views.Portfolios = Backbone.View.extend({
 		template: _.template(admin_index),
-		className: 'inner-container portfolio-container',
+		className: 'portfolio-container',
 
 		initialize: function() {
 			this.$el.html(this.template());

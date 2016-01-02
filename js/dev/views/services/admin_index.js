@@ -7,7 +7,7 @@ define([
 
 	App.Views.Services = Backbone.View.extend({
 		template: _.template(admin_index),
-		className: 'inner-container service-container',
+		className: 'service-container',
 
 		initialize: function() {
 			this.$el.html(this.template());

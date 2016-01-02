@@ -31,7 +31,7 @@ define([
 	                    App.showAlert('alert alert-danger', response.error);
 	                } else {
                 		App.session.loggedIn( response );
-                		App.router.navigate('', {trigger: true});
+                		App.router.navigate('admin/config', {trigger: true});
 	                }
 	            },
 	            error: function() {

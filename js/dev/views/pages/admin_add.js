@@ -6,7 +6,7 @@ define([
 
 	App.Views.AddPage = Backbone.View.extend({
 		template: _.template(admin_add),
-		className: 'inner-container page-container',
+		className: 'page-container',
 
 		initialize: function() {
 			this.model.on("invalid", function(model, errs) {

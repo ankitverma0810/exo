@@ -7,7 +7,7 @@ define([
 	App.Views.Error = Backbone.View.extend({
 
 		template: _.template(Error),
-        className: 'inner-container error-container',
+        className: 'error-container',
 
 		initialize: function (options) {
             this.page = options.page;

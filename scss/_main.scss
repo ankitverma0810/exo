@@ -5,7 +5,8 @@ body {
 }
 
 h2 {
-	font-size: 40px;		
+	font-size: 40px;
+	margin: 0px;		
 }
 
 p {
@@ -31,12 +32,26 @@ header {
 
 .wrap {
 	padding-top: 52px;
+	overflow: hidden;
 }
 
 .inner-container {
 	margin: 0 auto 40px;
 	max-width: 1170px;
 	min-height: 532px;
+	padding-top: 20px;
+	@include opacity(0);
+	@include transition-property(opacity);
+	@include transition-duration(.5s);
+	@include transition-timing-function(ease-in);
+
+	h2 {
+		font-size: 28px;
+	}
+}
+
+.inner-container.is-visible {
+	@include opacity(1);
 }
 
 .navbar {

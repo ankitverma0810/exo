@@ -55,6 +55,14 @@ define([
 	            data: data,
 	            processData: false,
 	            contentType: false,
+	            progressUpload: function(evt) {
+			        if (evt.lengthComputable) {
+			            console.log("Loaded " + parseInt( (evt.loaded / evt.total * 100), 10) + "%");
+			        }
+			        else {
+			            console.log("Length not computable.");
+			        }
+			    },
 	            success: function (response) {
 	            	var response = $.parseJSON(response);
 	            	callback(response);
@@ -63,7 +71,30 @@ define([
 	            	self.showAlert('alert alert-danger', 'An error occurred while uploading ' + file.name);
 	            }
 	        });
-	    }
+	    },
+
+	    transitionIn: function(view, callback) {
+            var delay;
+
+            var transitionIn = function() {
+                view.$el.addClass('is-visible');
+                view.$el.one('transitionend', function() {
+                    if (_.isFunction(callback)) {
+                        callback();
+                    }
+                })
+            };
+            _.delay(transitionIn, 20);
+        },
+
+        transitionOut: function(view, callback) {
+            view.$el.removeClass('is-visible');
+            view.$el.one('transitionend', function() {
+                if (_.isFunction(callback)) {
+                    callback();
+                };
+            });
+        }
 	}
 
 	$(document).ready(function() {
