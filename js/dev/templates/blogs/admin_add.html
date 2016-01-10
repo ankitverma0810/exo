@@ -10,9 +10,26 @@
 
 		<div class="form-group">
 			<label>Description</label>
-			<textarea name="description" id="description" class="form-control"><%= description %></textarea>
+			<textarea name="description" id="description" class="form-control ckeditor"><%= description %></textarea>
 			<p class="help-block"></p>
 		</div>
+		<script type="text/javascript">
+			CKEDITOR.replace( 'description', {
+				toolbar: [
+					{ name: 'document', items : [ 'Source','NewPage','Preview' ] },
+		            { name: 'basicstyles', items : [ 'Bold','Italic','Underline','Strike','-','RemoveFormat' ] },
+		            { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
+		            { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','Scayt' ] },
+		            '/',
+		            { name: 'styles', items : [ 'Styles','Format' ] },
+		            { name: 'paragraph', items : [ 'NumberedList','BulletedList','-','Outdent','Indent','-','Blockquote' ] },
+		            { name: 'insert', items :[ 'Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak','Iframe' ] },
+		            { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+		            { name: 'tools', items : [ 'Maximize','-','About' ] }
+				],
+				removeButtons: ''
+			});
+		</script>
 
 		<div class="form-group" id="imageContainer">
 			<label>Image</label>

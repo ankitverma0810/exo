@@ -48,6 +48,12 @@ module.exports = function(grunt) {
                         src: ['**/*.js', '**/*.map'],
                         dest: 'js/vendors/requirejs-text/'
                     },
+                    /*{
+                        expand: true,
+                        cwd: 'bower_components/ckeditor/',
+                        src: ['**'],
+                        dest: 'js/vendors/ckeditor/'
+                    },*/
 
                     // Fonts.
                     {

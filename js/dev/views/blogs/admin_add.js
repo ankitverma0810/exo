@@ -20,6 +20,8 @@ define([
 
 		submitBlog: function(e) {
 			e.preventDefault();
+			//updating ckeditor instance
+			CKEDITOR.instances.description.updateElement();
 
 			var $title = this.$el.find('#title'),
 				$description = this.$el.find('#description'),

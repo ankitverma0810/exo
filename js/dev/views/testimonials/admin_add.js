@@ -20,6 +20,8 @@ define([
 
 		submitTestimonial: function(e) {
 			e.preventDefault();
+			//updating ckeditor instance
+			CKEDITOR.instances.description.updateElement();
 
 			var $author = this.$el.find('#author'),
 				$description = this.$el.find('#description'),

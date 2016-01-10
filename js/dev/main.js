@@ -8,6 +8,7 @@ require([
 	
 	App.router = new appRouter();
 	App.session = new SessionModel();
+
 	// Check the auth status upon initialization,
     // before rendering anything or matching routes
 	App.session.checkAuth({
@@ -22,10 +23,15 @@ require([
 	// All navigation that is relative should be passed through the navigate
     // method, to be processed by the router. If the link has a `data-bypass`
     // attribute, bypass the delegation completely.
-	$(document).on("click", "a:not([data-bypass])", function(e) {
+	$(document).on("click", "a", function(e) {
         e.preventDefault();
-        var href = $(e.currentTarget).attr('href');
-        App.router.navigate(href, { trigger : true, replace : false });
+        var hasAttr = $(this).attr('data-bypass'),
+            hasClass = $(this).is('[class*="cke"]'),
+            href = $(e.currentTarget).attr('href');
+
+        if( !hasAttr && !hasClass ) {
+            App.router.navigate(href, { trigger : true, replace : false });
+        }
     });
 
 	//global sync functions as per cake api

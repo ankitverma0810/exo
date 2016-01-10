@@ -10,6 +10,7 @@ define([
 		root : "/",                     			   // The root path to run the application through.
         URL : "/exo-backend",                  		  // Base application URL
         API : "/admin",								 // Base API URL (used by models & collections)
+        DEBUG: true,
 		Models: {},
 		Collections: {},
 		Views: {},
@@ -17,8 +18,23 @@ define([
 		Vent: _.extend( {}, Backbone.Events ),
 
 		initialize: function() {
+			this.initPageElements();
+			this.debugging();
+		},
+
+		initPageElements: function() {
 			//affixnav for header
 			$('header').affix();
+		},
+
+		debugging: function() {
+		    if(!this.DEBUG){
+		        if(!window.console) window.console = {};
+		        var methods = ["log", "debug", "warn", "info"];
+		        for(var i=0;i<methods.length;i++){
+		            console[methods[i]] = function(){};
+		        }
+		    }
 		},
 
 		showAlert: function(className, message) {
@@ -75,7 +91,6 @@ define([
 
 	    transitionIn: function(view, callback) {
             var delay;
-
             var transitionIn = function() {
                 view.$el.addClass('is-visible');
                 view.$el.one('transitionend', function() {

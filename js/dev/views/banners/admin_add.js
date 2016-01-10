@@ -25,6 +25,9 @@ define([
 				$url = this.$el.find('#url'),
 				$filename = this.$el.find('#filename');
 
+			//updating ckeditor instance
+			CKEDITOR.instances.description.updateElement();
+
 			this.model.set( { filename: $filename[0]['files'][0], url: $url.val(), title: $title.val(), description: $description.val() } );
 			if( this.model.isValid() ) {
 				App.uploadFile(this.model.get('filename'), 'banners',
